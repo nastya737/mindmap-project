@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segmentation Data in Marketing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+        }
+        #mindmap {
+            width: 100vw;
+            height: 100vh;
+        }
+        .toolbar {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: #45a049;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+        }
+        .btn-export {
+            background: #2196F3;
+        }
+        .btn-export:hover {
+            background: #1976D2;
+        }
+        .btn-zoom {
+            background: #FF9800;
+        }
+        .btn-zoom:hover {
+            background: #F57C00;
+        }
+    </style>
+</head>
+<body>
+    <svg id="mindmap"></svg>
+    
+    <div class="toolbar">
+        <button class="btn" onclick="fitScreen()">🔍 Fit Screen</button>
+        <button class="btn btn-zoom" onclick="zoomIn()">➕ Zoom In</button>
+        <button class="btn btn-zoom" onclick="zoomOut()">➖ Zoom Out</button>
+        <button class="btn btn-export" onclick="exportSVG()">💾 Export SVG</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.14.3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.14.3/dist/browser/index.js"></script>
+
+    <script>
+        const markdown = `
+# Data Segmentation in Marketing
+
+## Definition
+- Process of dividing data into groups
+- Grouping objects by common features
+- Key method of data analysis
+- Foundation of personalization
+- Essential for targeted marketing
+
+## Main Types of Segmentation
+### Demographic
+- Age, gender, income
+- Education level
+- Marital status
+- Geographic location
+- Occupation type
+
+### Behavioral
+- Purchase history
+- Interaction frequency
+- Preferences and interests
+- Brand loyalty level
+- Response to promotions
+- Usage patterns
+
+### Psychographic
+- Lifestyle choices
+- Values and beliefs
+- Personality traits
+- Purchase motivation
+- Social status
+
+### Technographic
+- Devices used
+- Software preferences
+- Digital habits
+- Communication channels
+- Platform preferences
+
+## Segmentation Methods
+### RFM Analysis
+- Recency (last purchase date)
+- Frequency (number of purchases)
+- Monetary (total spending)
+- Customer lifetime value
+
+### Clustering Algorithms
+- K-means clustering
+- DBSCAN algorithm
+- Hierarchical clustering
+- Gaussian Mixture Models
+- Mean Shift clustering
+
+### Decision Trees
+- CHAID algorithm
+- CART algorithm
+- Random Forest
+- Gradient Boosting
+
+### Neural Networks
+- Self-Organizing Maps (SOM)
+- Autoencoders
+- Deep learning approaches
+- Embedding methods
+
+## Python Implementation
+### Required Libraries
+- pandas for data manipulation
+- numpy for numerical operations
+- scikit-learn for ML algorithms
+- matplotlib and seaborn for visualization
+- plotly for interactive charts
+
+### Algorithm Steps
+- Load and clean data
+- Exploratory Data Analysis (EDA)
+- Feature selection
+- Data normalization (StandardScaler)
+- Determine optimal clusters (Elbow method)
+- Apply clustering model
+- Evaluate with silhouette score
+- Visualize and interpret results
+
+### RFM Segmentation Code
+- Calculate Recency from current date
+- Count purchase Frequency
+- Sum Monetary value
+- Assign quartile scores (1-4)
+- Combine scores into segments
+- Create segment labels
+
+## Marketing Applications
+### Personalization
+- Targeted advertising
+- Individual offers
+- Recommendation systems
+- Personalized discounts
+- Custom email campaigns
+
+### Optimization
+- Pricing strategy
+- Communication channels
+- Content strategy
+- Optimal send times
+- Product recommendations
+
+### Predictive Analytics
+- Customer churn prediction
+- Lifetime Value (LTV) calculation
+- Conversion rate optimization
+- Customer retention strategies
+- Cross-sell opportunities
+
+### A/B Testing
+- Hypothesis testing
+- Segment-specific experiments
+- Performance evaluation
+- Statistical significance
+- Campaign optimization
+
+## Business Case Example
+### E-commerce Store Segmentation
+- VIP Segment (5% customers, 40% revenue)
+- Active Segment (15% customers, 35% revenue)
+- At-Risk Segment (30% customers, 15% revenue)
+- Lost Segment (50% customers, 10% revenue)
+
+### Strategies for Each Segment
+- VIP: Personal manager, exclusive offers
+- Active: Loyalty program, early access
+- At-Risk: Reactivation campaigns, surveys
+- Lost: Win-back offers, exit interviews
+
+## Key Benefits
+- Increase ROI by 30-50%
+- Better audience understanding
+- Efficient budget allocation
+- Higher customer satisfaction
+- Increased customer LTV
+- Reduced marketing costs
+- Improved conversion rates
+
+## Evaluation Metrics
+### Internal Validation
+- Silhouette coefficient
+- Davies-Bouldin index
+- Calinski-Harabasz index
+- Within-cluster sum of squares
+
+### Business Metrics
+- Segment profitability
+- Response rates
+- Customer acquisition cost
+- Retention rates by segment
+- Revenue per segment
+
+## Visualization Tools
+### Charts and Plots
+- Scatter plots with clusters
+- Heat maps of features
+- Parallel coordinates
+- Radar charts for profiles
+- Dendrograms for hierarchy
+
+### Interactive Dashboards
+- Plotly dashboards
+- Tableau integration
+- Power BI reports
+- Streamlit applications
+- Real-time monitoring
+
+## Best Practices
+### Data Preparation
+- Handle missing values
+- Remove outliers
+- Normalize features
+- Encode categorical variables
+- Feature engineering
+
+### Model Selection
+- Compare multiple algorithms
+- Cross-validation
+- Hyperparameter tuning
+- Ensemble methods
+- Regular updates
+
+## Future Trends
+### AI-Driven Segmentation
+- Real-time segmentation
+- Deep learning models
+- Natural language processing
+- Computer vision applications
+- Automated strategy generation
+
+### Integration
+- CRM system integration
+- Marketing automation
+- Omnichannel activation
+- Real-time personalization
+- Privacy-preserving methods
+        `;
+
+        // Initialize markmap
+        const { Transformer } = window.markmap;
+        const { Markmap } = window.markmap;
+        
+        const transformer = new Transformer();
+        const { root, features } = transformer.transform(markdown);
+        
+        const { styles, scripts } = transformer.getAssets();
+        
+        // Create markmap
+        const mm = Markmap.create(
+            '#mindmap',
+            {
+                maxWidth: 300,
+                colorFreezeLevel: 3,
+                duration: 500,
+                autoFit: true,
+                zoom: true,
+                pan: true,
+            },
+            root
+        );
+
+        // Global reference for zoom controls
+        window.mm = mm;
+
+        // Fit to screen
+        function fitScreen() {
+            mm.fit();
+        }
+
+        // Zoom in
+        function zoomIn() {
+            mm.rescale(1.3);
+        }
+
+        // Zoom out
+        function zoomOut() {
+            mm.rescale(0.7);
+        }
+
+        // Export as SVG
+        function exportSVG() {
+            const svgElement = document.getElementById('mindmap');
+            const serializer = new XMLSerializer();
+            const svgString = serializer.serializeToString(svgElement);
+            const blob = new Blob([svgString], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'segmentation-mindmap.svg';
+            a.click();
+            
+            URL.revokeObjectURL(url);
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            mm.fit();
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'f':
+                case 'F':
+                    if (e.ctrlKey || e.metaKey) {
+                        e.preventDefault();
+                        fitScreen();
+                    }
+                    break;
+                case '+':
+                case '=':
+                    if (e.ctrlKey || e.metaKey) {
+                        e.preventDefault();
+                        zoomIn();
+                    }
+                    break;
+                case '-':
+                    if (e.ctrlKey || e.metaKey) {
+                        e.preventDefault();
+                        zoomOut();
+                    }
+                    break;
+            }
+        });
+
+        console.log('✅ Mind map loaded successfully!');
+        console.log('🌐 Interactive features:');
+        console.log('   - Click to expand/collapse nodes');
+        console.log('   - Drag to pan');
+        console.log('   - Scroll to zoom');
+        console.log('   - Press F to fit screen');
+        console.log('   - Press Ctrl+/- to zoom');
+    </script>
+</body>
+</html>
